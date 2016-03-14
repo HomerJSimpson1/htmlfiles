@@ -1,0 +1,25 @@
+h1 {
+    /* Change the color of the h1 header*/
+    color: orange;
+
+    /* Change the font-family to monospace */
+    font-family: "Courier New", monospace;
+
+    /* Change the font-size to 35 px*/
+    font-size: 25px;
+
+    /* Change the font-style */
+    font-style: italic;
+
+    /* Change the font-weight. Options are bold or normal. */
+    font-weight: normal;
+
+    /* Change the font-variant property*/
+    font-variant: small-caps;
+
+    /* Change the text-alignment */
+    text-align: center;
+
+    /* Change the left margin */
+    margin-left: 20px;
+}

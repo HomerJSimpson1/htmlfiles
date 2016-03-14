@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title id="mytitle"></title>
+  <!-- include jquery, bootstrap and our stylesheet -->
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+
+  <link rel="stylesheet"
+	type="text/css"
+	href="bootstrap.css"
+	/>
+
+  <link rel="stylesheet"
+	type="text/css"
+	href="styles.css"
+	/>	
+
+</head>
+
+<body>
+  <h1 id="tophdr"></h1>
+  <img src="A Learning Christmas.jpg" alt="A Learning Christmas"/>
+
+  <br>
+  <br>
+  <div class="responsive">
+    Column1
+    Column2
+  </div>
+
+  <script type="text/javascript">
+    $("#mytitle").text("My Page");
+    $("#tophdr").text("My Header");
+  </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!-- Using an alert dialog box to print -->
+
+<head>
+</head>
+
+<body>
+	<!-- The onclick attribute is the code	     
+             that happens when the element is clicked.	     
+             The value of the attribute is some	     
+             javascript code.	     
+             In this case it creates an alert 	     
+             pop up dialog
+ 	-->
+	<h1 id="title" onclick="alert('hello');" >
+			Hello
+	</h1>
+</body>
+
+
+
+
+<!-- Using the console to print -->
+
+<head>
+</head>
+<body>
+	<!--
+ 	    In this case the onclick functions
+	    writes something to the console.
+	    The console is an object so we use the
+	    dot (.) notation to call a function
+ 	    on it
+	-->
+	<h1 id="title"
+ 	    onclick="console.log('hello');" >
+	    	Hello
+	</h1>
+</body>
+
+
+
+
+<!-- Using the jQuery Library -->
+
+<head>
+   <!-- to use jQuery we need to import it like this -->
+   <script src=" http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<!--
+ 		in this example use use jQuery to
+ 	        change the content itself.
+  	        The $ is shorthand for the jQuery function
+		 We are passing in a CSS selector which
+		 gets this element by its id.
+		 The html function sets the html content
+		 of an element
+	-->
+	<h1 id="title" onclick="$('#title').html('Goodbye');">
+ 		Hello
+ 	</h1>	
+</body>
+
+
+
+<!-- Using jQuery and also creating our own function -->
+
+<head>
+       <script src = "http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head> 
+
+<body>
+	<h1 id="title" onclick="sayHello()"> Hello </h1>
+</body>
+<!--
+ 	the script tag is where you can put
+ 	more complex scripts
+-->
+<script type="text/javascript">
+	
+	function sayHello() {
+		alert('Hello');
+	};
+</script>
+
+
+
+
+<!-- Toggle between "Hello" and "Goodbye" -->
+
+<head>
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+</head>
+
+<body>
+    <h1 id="title" onclick="sayGoodbye();"> Hello </h1>
+</body>
+
+<script type="text/javascript">
+    function sayGoodbye(){
+        console.log("goodbye");
+        $("#title").html("Goodbye");
+        $("#title").click(function () {
+            $("#title").html("Hello");
+            $("#title").off("click");
+        });
+    };
+</script>
+
+
+
+
