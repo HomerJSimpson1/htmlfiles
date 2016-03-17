@@ -33,9 +33,9 @@
 
       <!-- A navigation menu that selects different views -->
       <ul class="nav nav-tabs">
-            <li role="" class="active"><a href="#" id="albums-tab" >Albums</a></li>
-            <li role=""><a href="#" id="photos-tab" >Photos</a></li>
-            <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+            <li role="" class="active"><a href="#" id="animalclasses-tab" >Animal Classes</a></li>
+            <li role=""><a href="#" id="animalclass-tab" >Animal Class</a></li>
+            <li role=""><a href="#" id="animal-tab" >Animal</a></li>
           </ul>
       <br/><br/>
 
@@ -44,7 +44,83 @@
             via javascript and templates -->
       <div id="content"  class="container-fluid"  role="main">
       </div>
-  </div> <!-- / container -->
+
+    </div> <!-- / container -->
+
+
+    <!-- The templates ... -->
+
+
+    <!-- The Animal Classes Template -->
+    <!-- This is the landing page. This represents the array of all animal classes. -->
+    <script id="animal-classes-template" type="text/x-handlebars-template" >
+      <div class="row">
+
+	{{#each category}}
+	<div class="col-xs-12 col-md-3">
+	  <div class="animal-classes-thumbnail" data-id="{{@index}}">
+	    <!-- Kill the next line - there's no thumbnail element in the category array objects
+	    <img class="crop-img" src="{{thumbnail}}" alt=""/>
+	    -->
+
+	    <div class="caption">
+	      <h4>{{name}}</h4>
+	      <p>{{animals.length}}</p>
+	    </div> 
+
+	  </div> <!-- /class="animal-classes-thumbnail" -->
+	</div> <!-- /col -->
+
+	{{/each}}
+
+      </div>   <!-- /row -->
+    </script>
+
+
+    <!-- The Animal Class Template -->
+    <!-- This is the next level down from the Animal Classses page. This represents, e.g., Class Reptile, Class Mammal, etc. -->
+    <script id="animal-class-template" type="text/x-handlebars-template">
+      <div class="row">
+
+	{{#each animals}}
+	<div class="col-xs-12 col-md-3">
+	  <div class="animal-class-template" data-id="{{@index}}">
+	    <img class="crop-img" src="{{image1}}" alt=""/>
+	    
+	    <div class="caption">
+	      <h4>{{name}}</h4>
+	      <p>{{description}}</p>
+	    </div> <!-- /class="caption" -->
+	  </div> <!-- /class="animal-class-template" -->
+
+	</div> <!-- /col -->
+
+	{{/each}}
+
+      </div> <!-- /row -->
+    </script>
+
+
+
+    <!-- The Animal Template -->
+    <!-- This is the next level down (and lowest level page) from the Animal Class page. --> 
+    <!-- This represents a single animal, e.g., Snakes, Crocodiles, etc. -->
+    <script id="animal-template" type="text/x-handlebars-template">
+      <div class="row">
+
+	<div class="col-xs-12 col-md-3">
+	  <img class="medium-img" src="{{image1}}" alt=""/>
+	  <img class="medium-img" src="{{image2}}" alt=""/>
+	  
+	  <div class="caption">
+	    <h3>{{name}}</h3>
+	    <p>{{description}}</p>
+	  </div> <!-- /class="caption" -->
+
+	</div> <!-- /col -->
+      </div> <!-- /row -->
+
+    </script>
 
 
   </body>
