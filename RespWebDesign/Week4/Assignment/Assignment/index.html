@@ -1,23 +1,52 @@
-<!-- This is a first example of using a template -->
+<!DOCTYPE html>
+<html lang="en">
+  
+  <!-- This is a first example of using a template -->
 
-<head>
+  <head>
 
-<!-- include our libraries and css files -->
+    <!-- include our libraries and css files -->
 
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/handlebars-v3.0.3.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/handlebars-v3.0.3.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="AnimalsData.js"></script>
+    <script src="assignment.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
-<script src="AnimalsData.js"></script>
-<script src="assignment.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="assignment.css" rel="stylesheet">
 
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="assignment.css" rel="stylesheet">
+    <title>ASSIGNMENT 4</title>
 
-</head>
+  </head>
 
-<body>
+  <body>
 
     <!-- put your HTML here -->
+    <div class="container">
 
-</body>
+      <!-- page tile -->
+      <div class="page-header">
+        <h1>ASSIGNMENT 4 - ANIMAL DATA</h1>
+      </div>    
+
+      <!-- A navigation menu that selects different views -->
+      <ul class="nav nav-tabs">
+            <li role="" class="active"><a href="#" id="albums-tab" >Albums</a></li>
+            <li role=""><a href="#" id="photos-tab" >Photos</a></li>
+            <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+          </ul>
+      <br/><br/>
+
+
+      <!-- the content section is empty as we will fill it 
+            via javascript and templates -->
+      <div id="content"  class="container-fluid"  role="main">
+      </div>
+  </div> <!-- / container -->
+
+
+  </body>
+
+</html>
