@@ -21,10 +21,12 @@
 </body>
 
 
+<!-- MADE CHANGES TO THIS TEMPLATE 4/15/2016. See commented out code below. -->
 <template name="website_form">
 	<a class="btn btn-default js-toggle-website-form" href="#">
-  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  	  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
+
 	<div id="website_form" class="hidden_div">
 		<form class="js-save-website-form">
 		  <div class="form-group">
@@ -70,3 +72,4 @@
 	<!-- you will be putting your up and down vote buttons in here! -->
 </li>
 </template>
+
