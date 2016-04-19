@@ -13,17 +13,37 @@ if (Meteor.isClient) {
 		}
 	});
 
-        Template.body.helpers({
-	    username:function(){
-		if(Meteor.user()){
-		    return Meteor.user().username;
-		    // return Meteor.user().emails[0].address;
-		}
-		else {
-		    return "Anonymous User";
-		}
-	    }
-	});
+
+  // I added the following helper function to retrieve user names
+  Template.body.helpers({username: function(){
+      if (Meteor.user()) {
+          return Meteor.user().emails[0].address;
+	  //return Meteor.user().username;
+      }
+      else {
+        return "Anonymous User";
+      }
+
+    } // End username: function()
+
+  }); // End Template.body.helpers()
+
+  // End of the added helper function (Template.body.helpers) that I added
+
+
+
+    
+        // Template.body.helpers({
+	//     username:function(){
+	// 	if(Meteor.user()){
+	// 	    return Meteor.user().username;
+	// 	    // return Meteor.user().emails[0].address;
+	// 	}
+	// 	else {
+	// 	    return "Anonymous User";
+	// 	}
+	//     }
+	// });
 
 	/////
 	// template events 

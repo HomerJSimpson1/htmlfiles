@@ -19,6 +19,9 @@
 	</nav>
 
 	<div class="container">
+<!--     <\!-- I added the following for user names -\-> -->
+<!--     <h1>Welcome to the Site Aggregator, {{username}}!</h1> -->
+<!--     <\!-- / user name addition to code -\-> -->	  
 		{{> website_form}}
 		{{> website_list}}
 	</div>
@@ -28,15 +31,18 @@
 <!-- MADE CHANGES TO THIS TEMPLATE 4/15/2016. See commented out code below. -->
 <template name="website_form">
 	<a class="btn btn-default js-toggle-website-form" href="#">
-  		<!-- <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> -->
+  	  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	  <!--
 		{{#if currentUser}}
 		     <span class="glyphicon glyphicon-plus"></span>
 		{{/if}}
+		     -->
 	</a>
-	{{#if currentUser}}
-	    <div id="website_form">
-	    <!-- <div id="website_form" class="hidden_div"> -->
-	{{/if}}
+
+	<div id="website_form" class="hidden_div">
+	<!-- {{#if currentUser}} -->
+	    <!-- <div id="website_form"> -->	  
+	<!-- {{/if}} -->
 		<form class="js-save-website-form">
 		  <div class="form-group">
 		    <label for="url">Site address</label>
