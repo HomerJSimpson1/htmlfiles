@@ -6,6 +6,15 @@ if (Meteor.isClient) {
 	passwordSignupFields: "USERNAME_AND_EMAIL"
     });
 
+
+    ///Routing
+      // Router.route('/', function () {
+      // 	  this.render('Home', {
+      // 	      data: function () { return Items.findOne({_id: this.params._id}); }
+      // 	  });
+      // });
+
+    
 	/////
 	// template helpers 
 	/////

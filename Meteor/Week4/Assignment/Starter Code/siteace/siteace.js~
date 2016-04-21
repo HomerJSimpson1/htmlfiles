@@ -2,6 +2,10 @@ Websites = new Mongo.Collection("websites");
 
 if (Meteor.isClient) {
 
+    Accounts.ui.config({
+	passwordSignupFields: "USERNAME_AND_EMAIL"
+    });
+
 	/////
 	// template helpers 
 	/////
@@ -9,7 +13,7 @@ if (Meteor.isClient) {
 	// helper function that returns all available websites
 	Template.website_list.helpers({
 		websites:function(){
-			return Websites.find({});
+		    return Websites.find({}, {sort: {upVoteCount:-1}});
 		}
 	});
 
@@ -17,8 +21,8 @@ if (Meteor.isClient) {
     // I added the following helper function to retrieve user names
     Template.body.helpers({username: function(){
 	if (Meteor.user()) {
-            return Meteor.user().emails[0].address;
-	    //return Meteor.user().username;
+            //return Meteor.user().emails[0].address;
+	    return Meteor.user().username;
 	}
 	else {
             return "Anonymous User";
@@ -43,7 +47,20 @@ if (Meteor.isClient) {
 			// (this is the data context for the template)
 			var website_id = this._id;
 			console.log("Up voting website with id "+website_id);
-			// put the code in here to add a vote to a website!
+		        // put the code in here to add a vote to a website!
+		        //console.log("current count "+Websites.findOne(website_id).upVoteCount);
+		        //Websites.findOne(website_id).upVoteCount++;
+		        // var curUpVotes = Websites.findOne({_id:website_id}).upVoteCount;
+		        // console.log("Current number upvotes "+curUpVotes);
+		        // curUpVotes = curUpVotes + 1;
+		        // console.log("Current number upvotes "+curUpVotes);		    
+		        // Websites.update({_id:website_id}, {$set: {upVoteCount:curUpVotes}});
+		        // var curUpVotes = 
+		        // console.log("Current number upvotes "+curUpVotes);
+		        // curUpVotes = curUpVotes + 1;
+		        // console.log("Current number upvotes "+curUpVotes);		    
+		        Websites.update({_id:website_id},
+		              {$set: {upVoteCount:Websites.findOne({_id:website_id}).upVoteCount + 1  }});
 
 			return false;// prevent the button from reloading the page
 		}, 
@@ -54,10 +71,23 @@ if (Meteor.isClient) {
 			var website_id = this._id;
 			console.log("Down voting website with id "+website_id);
 
-			// put the code in here to remove a vote from a website!
+		        // put the code in here to remove a vote from a website!
+		        //Websites.findOne(website_id).upVoteCount--;
+		        //var curDownVotes = Websites.findOne({_id:website_id}).downVoteCount;
+		        //Websites.update({_id:website_id}, {$set: {downVoteCount:curDownVotes++}});
+
+		        Websites.update({_id:website_id},
+		              {$set: {downVoteCount:Websites.findOne({_id:website_id}).downVoteCount + 1  }});		    
 
 			return false;// prevent the button from reloading the page
 		}
+	    ,
+	    "click .js-del-item":function(event){
+		var website_id = this._id;
+		console.log(website_id);
+		Websites.remove({"_id":website_id});
+		return false; // prevent the button from reloading the page
+	    }
 	})
 
 	Template.website_form.events({
@@ -70,7 +100,16 @@ if (Meteor.isClient) {
 			var url = event.target.url.value;
 			console.log("The url they entered is: "+url);
 			
-			//  put your website saving code in here!	
+		    //  put your website saving code in here!
+		    //$(event.target).
+			Websites.insert({
+			    url:event.target.url.value,
+			    title:event.target.title.value,
+			    description:event.target.description.value,
+			    createdOn:new Date(),
+			    upVoteCount:0,
+			    downVoteCount:0
+			}) // end Websites.insert()
 
 			return false;// stop the form submit from reloading the page
 
@@ -88,29 +127,38 @@ if (Meteor.isServer) {
     // code to run on server at startup
     if (!Websites.findOne()){
     	console.log("No websites yet. Creating starter data.");
+	//var init_val = 0;
     	  Websites.insert({
     		title:"Goldsmiths Computing Department", 
     		url:"http://www.gold.ac.uk/computing/", 
     		description:"This is where this course was developed.", 
-    		createdOn:new Date()
+    	        createdOn:new Date(),
+	        upVoteCount:0,
+	        downVoteCount:0
     	});
     	 Websites.insert({
     		title:"University of London", 
     		url:"http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route", 
     		description:"University of London International Programme.", 
-    		createdOn:new Date()
+    	        createdOn:new Date(),
+	        upVoteCount:0,
+	        downVoteCount:0
     	});
     	 Websites.insert({
     		title:"Coursera", 
     		url:"http://www.coursera.org", 
     		description:"Universal access to the world’s best education.", 
-    		createdOn:new Date()
-    	});
+    	        createdOn:new Date(),
+                upVoteCount:0,
+	        downVoteCount:0
+    	 });
     	Websites.insert({
     		title:"Google", 
     		url:"http://www.google.com", 
     		description:"Popular search engine.", 
-    		createdOn:new Date()
+    	        createdOn:new Date(),
+	        upVoteCount:0,
+	        downVoteCount:0
     	});
     }
   });
