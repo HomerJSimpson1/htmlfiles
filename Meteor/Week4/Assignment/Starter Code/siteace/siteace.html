@@ -12,11 +12,22 @@
 </body>
 
 
+<template name="ApplicationLayout">
+  {{> yield "navbar"}}
+  {{> yield "main"}}
+</template>
+
 
 <template name="welcome">
+  <div class="container">
+    <div class="jumbotron">
 	  <!-- I added the following for user names -->
-	  <h1>Welcome to the Site Aggregator, {{username}}!</h1>
-          <!-- / user name addition to code -->	    
+	  <h1>Welcome to Site Aggregator!</h1>
+	  <!--<h1>Welcome to the Site Aggregator, {{username}}!</h1>-->
+	  <a href="/website_list" class="btn btn-info">ENTER</a>
+          <!-- / user name addition to code -->
+    </div>
+  </div>
 </template>
 
 
@@ -37,6 +48,16 @@
 	  </div>
 	</nav>
 
+</template>
+
+
+<template name="website">
+  <!--
+      This is where we create the "details" page for a website.
+      List the details about the website and allow for comments, which need to be saved with
+      each website_item record.
+      See "Better Routing" video around the 7 minute mark.
+    -->
 </template>
 
 

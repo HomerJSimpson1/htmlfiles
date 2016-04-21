@@ -2,17 +2,37 @@ Websites = new Mongo.Collection("websites");
 
 if (Meteor.isClient) {
 
+
+    /// Accounts config
     Accounts.ui.config({
 	passwordSignupFields: "USERNAME_AND_EMAIL"
     });
 
 
     ///Routing
-      // Router.route('/', function () {
-      // 	  this.render('Home', {
-      // 	      data: function () { return Items.findOne({_id: this.params._id}); }
-      // 	  });
-      // });
+    Router.configure({
+	layoutTemplate: 'ApplicationLayout'
+    })
+    
+    Router.route('/', function () {
+	this.render('welcome', {
+	    to: "main"
+	});
+    // 	  this.render('Home', {
+    // 	      data: function () { return Items.findOne({_id: this.params._id}); }
+    // 	  });
+     });
+
+
+    Router.route('/website_list', function () {
+	this.render('navbar', {
+	    to: "navbar"
+	});
+	this.render('website_list', function() {
+	    to: "main"
+	});
+	
+    });
 
     
 	/////
