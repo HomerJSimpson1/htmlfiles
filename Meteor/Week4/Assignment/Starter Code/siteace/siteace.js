@@ -34,6 +34,18 @@ if (Meteor.isClient) {
 	
     });
 
+
+    // For the "details" page:
+    // Router.route('/details', function () {
+    // 	this.render('navbar', {
+    // 	    to: "navbar"
+    // 	});
+    // 	this.render('website_item_details', function() {
+    // 	    to: "main"
+    // 	});
+	
+    // });
+
     
 	/////
 	// template helpers 
