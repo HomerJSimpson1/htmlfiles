@@ -51,22 +51,24 @@
 </template>
 
 
-<!--
+<!-- -->
 <template name="website_item_details">
--->
+<!-- -->
   <!--
       This is where we create the "details" page for a website.
       List the details about the website and allow for comments, which need to be saved with
       each website_item record.
       See "Better Routing" video around the 7 minute mark.
     -->
-  <!--
+  <!-- -->
       {{> website_item}}
 	Comments:<br />
 	<input type="text" name="Comment" class="comments">
 	<br /><br />
+  <!-- -->
+<!-- -->
 </template>
--->
+<!-- -->
 
 
 <!-- MADE CHANGES TO THIS TEMPLATE 4/15/2016. See commented out code below. -->
@@ -131,6 +133,7 @@
 	<br /><br />
 	-->
 	<button class="js-del-item btn btn-warning">DELETE</button>
+	<a href="/details">VIEW DETAILS</a>
 	<br /><br />
 </li>
 </template>

@@ -36,15 +36,16 @@ if (Meteor.isClient) {
 
 
     // For the "details" page:
-    // Router.route('/details', function () {
-    // 	this.render('navbar', {
-    // 	    to: "navbar"
-    // 	});
-    // 	this.render('website_item_details', function() {
-    // 	    to: "main"
-    // 	});
+    Router.route('/details/:_id', function () {
+    	this.render('navbar', {
+    	    to: "navbar"
+    	});
+    	this.render('website_item_details', function() {
+    	    to: "main",
+         data: function () { return Websites.findOne({_id: this.params._id}); }
+    	});
 	
-    // });
+    });  // end Router.route('details/:_id', ...)
 
     
 	/////
