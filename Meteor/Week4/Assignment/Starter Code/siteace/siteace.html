@@ -62,8 +62,20 @@
     -->
   <!-- -->
       {{> website_item}}
+
+
+        <!-- Display all existing comments in the database for the selected website. -->
+	<!-- Okay, now what goes inside of the #each .. /each part? -->
+<!--
 	Comments:<br />
+        {{#each comments}}
+	     {{comment}}
+	{{/each}}
+-->
+
+        Post Comment:<br />
 	<input type="text" name="Comment" class="comments">
+	<button class="js-post-comment btn btn-success">POST</button>
 	<br /><br />
   <!-- -->
 <!-- -->

@@ -83,6 +83,20 @@ if (Meteor.isClient) {
 	// template events 
 	/////
 
+    // To work with the details page...
+        Template.website_item_details.events({
+	    "click .js-post-comment":function(event){
+		var website_id = this._id;
+		Websites.update({_id:website_id}, 
+				{$push: {comments:event.target.Comment.value}});
+		return false; // prevent the button from reloading the page
+
+	    } // end "click .js-post-comment"
+
+	}) // end Template.website_item_details.events
+
+
+
 	Template.website_item.events({
 		"click .js-upvote":function(event){
 			// example of how you can access the id for the website in the database
@@ -150,7 +164,8 @@ if (Meteor.isClient) {
 			    description:event.target.description.value,
 			    createdOn:new Date(),
 			    upVoteCount:0,
-			    downVoteCount:0
+			    downVoteCount:0,
+			    comments:[]
 			}) // end Websites.insert()
 
 			return false;// stop the form submit from reloading the page
@@ -176,7 +191,8 @@ if (Meteor.isServer) {
     		description:"This is where this course was developed.", 
     	        createdOn:new Date(),
 	        upVoteCount:0,
-	        downVoteCount:0
+	        downVoteCount:0,
+	        comments:[]
     	});
     	 Websites.insert({
     		title:"University of London", 
@@ -184,7 +200,8 @@ if (Meteor.isServer) {
     		description:"University of London International Programme.", 
     	        createdOn:new Date(),
 	        upVoteCount:0,
-	        downVoteCount:0
+	        downVoteCount:0,
+	        comments:[]
     	});
     	 Websites.insert({
     		title:"Coursera", 
@@ -192,7 +209,8 @@ if (Meteor.isServer) {
     		description:"Universal access to the world’s best education.", 
     	        createdOn:new Date(),
                 upVoteCount:0,
-	        downVoteCount:0
+	        downVoteCount:0,
+	        comments:[]
     	 });
     	Websites.insert({
     		title:"Google", 
@@ -200,7 +218,8 @@ if (Meteor.isServer) {
     		description:"Popular search engine.", 
     	        createdOn:new Date(),
 	        upVoteCount:0,
-	        downVoteCount:0
+	        downVoteCount:0,
+	        comments:[]
     	});
     }
   });
