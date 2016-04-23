@@ -51,14 +51,36 @@
 </template>
 
 
-<template name="website">
+<!-- -->
+<template name="website_item_details">
+<!-- -->
   <!--
       This is where we create the "details" page for a website.
       List the details about the website and allow for comments, which need to be saved with
       each website_item record.
       See "Better Routing" video around the 7 minute mark.
     -->
+  <!-- -->
+      {{> website_item}}
+
+
+        <!-- Display all existing comments in the database for the selected website. -->
+	<!-- Okay, now what goes inside of the #each .. /each part? -->
+<!--
+	Comments:<br />
+        {{#each comments}}
+	     {{comment}}
+	{{/each}}
+-->
+
+        Post Comment:<br />
+	<input type="text" name="Comment" class="comments">
+	<button class="js-post-comment btn btn-success">POST</button>
+	<br /><br />
+  <!-- -->
+<!-- -->
 </template>
+<!-- -->
 
 
 <!-- MADE CHANGES TO THIS TEMPLATE 4/15/2016. See commented out code below. -->
@@ -117,7 +139,13 @@
 	<p> Upvotes:{{upVoteCount}} Downvotes:{{downVoteCount}}
 	</p>
 	<p> Date Created: {{createdOn}}</p>
+	<!--
+	Comments:<br />
+	<input type="text" name="Comment" class="comments">
+	<br /><br />
+	-->
 	<button class="js-del-item btn btn-warning">DELETE</button>
+	<a href="/details">VIEW DETAILS</a>
 	<br /><br />
 </li>
 </template>
