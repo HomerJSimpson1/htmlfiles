@@ -40,9 +40,9 @@ if (Meteor.isClient) {
     	this.render('navbar', {
     	    to: "navbar"
     	});
-    	this.render('website_item_details', function() {
+    	this.render('details', {
     	    to: "main",
-         data: function () { return Websites.findOne({_id: this.params._id}); }
+         data:function () { return Websites.findOne({_id: this.params._id}); }
     	});
 	
     });  // end Router.route('details/:_id', ...)
@@ -84,7 +84,7 @@ if (Meteor.isClient) {
 	/////
 
     // To work with the details page...
-        Template.website_item_details.events({
+        Template.details.events({
 	    "click .js-post-comment":function(event){
 		var website_id = this._id;
 		Websites.update({_id:website_id}, 
@@ -93,7 +93,7 @@ if (Meteor.isClient) {
 
 	    } // end "click .js-post-comment"
 
-	}) // end Template.website_item_details.events
+	}) // end Template.details.events
 
 
 

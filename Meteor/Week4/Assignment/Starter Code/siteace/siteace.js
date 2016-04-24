@@ -28,9 +28,9 @@ if (Meteor.isClient) {
 	this.render('navbar', {
 	    to: "navbar"
 	});
-	this.render('website_list', function() {
+	this.render('websites', function() {
 	    to: "main"
-	});
+	});	
 	
     });
 
