@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 Meteor.startup(() => {
 <<<<<<< HEAD
   // code to run on server at startup
-    Songs = new Mongo.Collection("songs");
+    //Songs = new Mongo.Collection("songs");
 
 =======
     // code to run on server at startup
