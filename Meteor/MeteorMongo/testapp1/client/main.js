@@ -3,10 +3,13 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+/*
 <<<<<<< HEAD
 =======
-Songs = new Mongo.Collection("songs");
 >>>>>>> e048e0ca65c2ed39699f28f9fdf781c13d37477e
+*/
+
+Songs = new Mongo.Collection("songs");
 
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
