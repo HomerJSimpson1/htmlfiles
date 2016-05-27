@@ -67,6 +67,14 @@ Meteor.methods({
     doc = Documents.findOne();
     if (!doc){return;}// no doc give up
     if (!this.userId){return;}// no logged in user give up
+
+      // Added the following several lines to test all ways to access 
+      // the currently logged in user's id.
+      //console.log(this.userId);
+      //console.log(Meteor.userId);
+      //console.log(Meteor.user()._id);
+      //console.log(this.user()._id);
+
     // now I have a doc and possibly a user
     user = Meteor.user().profile;
     eusers = EditingUsers.findOne({docid:doc._id});
