@@ -1,4 +1,5 @@
 Websites = new Mongo.Collection("websites");
+//Comments = new Mongo.Colleciton("comments");
 
 if (Meteor.isClient) {
 
@@ -85,11 +86,45 @@ if (Meteor.isClient) {
 
     // To work with the details page...
         Template.details.events({
-	    "click .js-post-comment":function(event){
+	    //"click .js-post-comment":function(event){
+	    "submit .new_comment":function(event){
+		event.preventDefault();
+		console.log("Submitted form!");
 		var website_id = this._id;
-		Websites.update({_id:website_id}, 
-				{$push: {comments:event.target.Comment.value}});
-		return false; // prevent the button from reloading the page
+		var awebsite = Websites.findOne({_id:website_id});
+		var webcomments = awebsite.comments;		
+		//var webcomments = Websites.findOne({_id:website_id}).comments;
+		if (!awebsite) { // then no website
+		    console.log("Help!");
+		}
+		else {
+		    console.log("website id = "+website_id);
+		    if (!webcomments) { // then there are no comments yet for this website
+		    	webcomments = [];
+		    }
+		    else
+		    {
+			console.log(webcomments);
+		    }
+		    console.log(event.target.Comment.value);
+		    //console.log(event.target.Comment);
+		    // console.log($("#Comment").text());
+		    // console.log(document.getElementById("Comment").value);
+		    //console.log(document.getElementById("Comment").innerHTML);
+		    // console.log($("#Comment").value);
+		    // console.log($(".comments").value);		    
+		    // webcomments.push({comments:event.target.Comment.value});
+		    //webcomments.unshift({comments:event.target.Comment.value});
+		    webcomments.unshift(event.target.Comment.value);
+		    event.target.Comment.value = "";
+		    awebsite.comments = webcomments;
+		    Websites.update(awebsite._id, awebsite);
+		    // //Websites.update({_id:website_id}, 
+		    // //		{$push: {comments:event.target.Comment.value}});
+
+		    return false; // prevent the button from reloading the page
+		    
+		} // end else
 
 	    } // end "click .js-post-comment"
 
@@ -103,18 +138,7 @@ if (Meteor.isClient) {
 			// (this is the data context for the template)
 			var website_id = this._id;
 			console.log("Up voting website with id "+website_id);
-		        // put the code in here to add a vote to a website!
-		        //console.log("current count "+Websites.findOne(website_id).upVoteCount);
-		        //Websites.findOne(website_id).upVoteCount++;
-		        // var curUpVotes = Websites.findOne({_id:website_id}).upVoteCount;
-		        // console.log("Current number upvotes "+curUpVotes);
-		        // curUpVotes = curUpVotes + 1;
-		        // console.log("Current number upvotes "+curUpVotes);		    
-		        // Websites.update({_id:website_id}, {$set: {upVoteCount:curUpVotes}});
-		        // var curUpVotes = 
-		        // console.log("Current number upvotes "+curUpVotes);
-		        // curUpVotes = curUpVotes + 1;
-		        // console.log("Current number upvotes "+curUpVotes);		    
+		        // put the code in here to add a vote to a website!    
 		        Websites.update({_id:website_id},
 		              {$set: {upVoteCount:Websites.findOne({_id:website_id}).upVoteCount + 1  }});
 
@@ -124,14 +148,10 @@ if (Meteor.isClient) {
 
 			// example of how you can access the id for the website in the database
 			// (this is the data context for the template)
-			var website_id = this._id;
+		        var website_id = this._id;
 			console.log("Down voting website with id "+website_id);
 
 		        // put the code in here to remove a vote from a website!
-		        //Websites.findOne(website_id).upVoteCount--;
-		        //var curDownVotes = Websites.findOne({_id:website_id}).downVoteCount;
-		        //Websites.update({_id:website_id}, {$set: {downVoteCount:curDownVotes++}});
-
 		        Websites.update({_id:website_id},
 		              {$set: {downVoteCount:Websites.findOne({_id:website_id}).downVoteCount + 1  }});		    
 
@@ -165,7 +185,7 @@ if (Meteor.isClient) {
 			    createdOn:new Date(),
 			    upVoteCount:0,
 			    downVoteCount:0,
-			    comments:[]
+			    //comments:[]
 			}) // end Websites.insert()
 
 			return false;// stop the form submit from reloading the page
@@ -175,7 +195,7 @@ if (Meteor.isClient) {
 
 
     
-}
+}          // end Meteor.isClient()
 
 
 if (Meteor.isServer) {
@@ -192,7 +212,7 @@ if (Meteor.isServer) {
     	        createdOn:new Date(),
 	        upVoteCount:0,
 	        downVoteCount:0,
-	        comments:[]
+	        //comments:[]
     	});
     	 Websites.insert({
     		title:"University of London", 
@@ -201,7 +221,7 @@ if (Meteor.isServer) {
     	        createdOn:new Date(),
 	        upVoteCount:0,
 	        downVoteCount:0,
-	        comments:[]
+	        //comments:[]
     	});
     	 Websites.insert({
     		title:"Coursera", 
@@ -210,7 +230,7 @@ if (Meteor.isServer) {
     	        createdOn:new Date(),
                 upVoteCount:0,
 	        downVoteCount:0,
-	        comments:[]
+	        //comments:[]
     	 });
     	Websites.insert({
     		title:"Google", 
@@ -219,10 +239,10 @@ if (Meteor.isServer) {
     	        createdOn:new Date(),
 	        upVoteCount:0,
 	        downVoteCount:0,
-	        comments:[]
+	        //comments:[]
     	});
     }
-  });
-}
+  });  // end Meteor.startup() function
+}      // end Meteor.isServer()
 
 

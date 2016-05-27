@@ -18,6 +18,14 @@
 </template>
 
 
+<template name="websites">
+  <div class="container">
+    {{> website_form}}
+    {{> website_list}}
+  </div>  
+</template>
+
+
 <template name="welcome">
   <div class="container">
     <div class="jumbotron">
@@ -71,6 +79,9 @@
 	 {{description}}
        </p>
 
+       <a href="/website_list">Return to Website Listing</a>
+       <br /><br />
+
        Comments:<br />
        <!--
         {{#each comments}}
@@ -79,6 +90,7 @@
 	 -->
        {{comments}}
 
+        <br /><br />       
         Post Comment:<br />
 	<input type="text" name="Comment" class="comments">
 	<br />
@@ -150,7 +162,9 @@
 	<input type="text" name="Comment" class="comments">
 	<br /><br />
 	-->
-	<button class="js-del-item btn btn-warning">DELETE</button>
+	{{#if currentUser}}
+	        <button class="js-del-item btn btn-warning">DELETE</button>
+	{{/if}}
 	<a href="/details/{{_id}}">VIEW DETAILS</a>
 	<br /><br />
 </li>
