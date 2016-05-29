@@ -1,5 +1,5 @@
 Websites = new Mongo.Collection("websites");
-//Comments = new Mongo.Colleciton("comments");
+
 
 if (Meteor.isClient) {
 
@@ -19,9 +19,7 @@ if (Meteor.isClient) {
 	this.render('welcome', {
 	    to: "main"
 	});
-    // 	  this.render('Home', {
-    // 	      data: function () { return Items.findOne({_id: this.params._id}); }
-    // 	  });
+
      });
 
 
@@ -64,7 +62,6 @@ if (Meteor.isClient) {
     // I added the following helper function to retrieve user names
     Template.body.helpers({username: function(){
 	if (Meteor.user()) {
-            //return Meteor.user().emails[0].address;
 	    return Meteor.user().username;
 	}
 	else {
@@ -86,14 +83,13 @@ if (Meteor.isClient) {
 
     // To work with the details page...
         Template.details.events({
-	    //"click .js-post-comment":function(event){
 	    "submit .new_comment":function(event){
 		event.preventDefault();
 		console.log("Submitted form!");
 		var website_id = this._id;
 		var awebsite = Websites.findOne({_id:website_id});
 		var webcomments = awebsite.comments;		
-		//var webcomments = Websites.findOne({_id:website_id}).comments;
+
 		if (!awebsite) { // then no website
 		    console.log("Help!");
 		}
@@ -107,20 +103,10 @@ if (Meteor.isClient) {
 			console.log(webcomments);
 		    }
 		    console.log(event.target.Comment.value);
-		    //console.log(event.target.Comment);
-		    // console.log($("#Comment").text());
-		    // console.log(document.getElementById("Comment").value);
-		    //console.log(document.getElementById("Comment").innerHTML);
-		    // console.log($("#Comment").value);
-		    // console.log($(".comments").value);		    
-		    // webcomments.push({comments:event.target.Comment.value});
-		    //webcomments.unshift({comments:event.target.Comment.value});
 		    webcomments.unshift(event.target.Comment.value);
 		    event.target.Comment.value = "";
 		    awebsite.comments = webcomments;
 		    Websites.update(awebsite._id, awebsite);
-		    // //Websites.update({_id:website_id}, 
-		    // //		{$push: {comments:event.target.Comment.value}});
 
 		    return false; // prevent the button from reloading the page
 		    
@@ -171,24 +157,34 @@ if (Meteor.isClient) {
 			$("#website_form").toggle('slow');
 		}, 
 		"submit .js-save-website-form":function(event){
+		    event.preventDefault();
+		    // here is an example of how to get the url out of the form:
+		    var url = event.target.url.value;
+		    console.log("The url they entered is: "+url);
 
-			// here is an example of how to get the url out of the form:
-			var url = event.target.url.value;
-			console.log("The url they entered is: "+url);
-			
+		    // HTTP.call("GET", url,
+		    // 	      function(error, result) {
+		    // 		  if (!error) {
+		    // 		      console.log(result);
+		    // 		  }
+		    // 		  else {
+		    // 		      console.log("Error "+error+" was encountered.");
+		    // 		  }
+		    // 	      });
+				  
 		    //  put your website saving code in here!
 		    //$(event.target).
-			Websites.insert({
-			    url:event.target.url.value,
-			    title:event.target.title.value,
-			    description:event.target.description.value,
-			    createdOn:new Date(),
-			    upVoteCount:0,
-			    downVoteCount:0,
-			    //comments:[]
-			}) // end Websites.insert()
+		    Websites.insert({
+			url:event.target.url.value,
+			title:event.target.title.value,
+			description:event.target.description.value,
+			createdOn:new Date(),
+			upVoteCount:0,
+			downVoteCount:0,
+			//comments:[]
+		    }) // end Websites.insert()
 
-			return false;// stop the form submit from reloading the page
+		    return false;// stop the form submit from reloading the page
 
 		}
 	});
@@ -204,7 +200,7 @@ if (Meteor.isServer) {
     // code to run on server at startup
     if (!Websites.findOne()){
     	console.log("No websites yet. Creating starter data.");
-	//var init_val = 0;
+
     	  Websites.insert({
     		title:"Goldsmiths Computing Department", 
     		url:"http://www.gold.ac.uk/computing/", 

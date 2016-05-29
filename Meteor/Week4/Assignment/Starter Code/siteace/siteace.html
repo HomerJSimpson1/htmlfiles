@@ -29,11 +29,8 @@
 <template name="welcome">
   <div class="container">
     <div class="jumbotron">
-	  <!-- I added the following for user names -->
 	  <h1>Welcome to Site Aggregator!</h1>
-	  <!--<h1>Welcome to the Site Aggregator, {{username}}!</h1>-->
 	  <a href="/website_list" class="btn btn-info">ENTER</a>
-          <!-- / user name addition to code -->
     </div>
   </div>
 </template>
@@ -44,11 +41,9 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <!-- I added the next two lines -->
 	      <!-- These lines use the accounts-ui and accounts-password packages -->
 	      {{> loginButtons}}
 	      <br /><br />
-	      <!-- / I added the next two lines -->	      
 	      <a class="navbar-brand" href="#">
 	        Site Ace
 	      </a>
@@ -69,11 +64,7 @@
   -->
 <template name="details">
   <div class="container">
-       <!-- {{> website_item}} -->
-  
         <!-- Display all existing comments in the database for the selected website. -->
-	<!-- Okay, now what goes inside of the #each .. /each part? -->
-
 	<a href="{{url}}">{{title}}</a>
        <p>
 	 {{description}}
@@ -88,8 +79,6 @@
 	     {{this}}<br /><br />
         {{/each}}
        
-       <!-- {{comments}} -->
-
         <br /><br />       
         Post Comment:<br />
 	<form class="new_comment">
@@ -97,14 +86,14 @@
 	  <input type="submit" value="Submit">
 	</form>
 	<br />
-<!--	<button class="js-post-comment btn btn-success">POST</button> -->
+
 	<br /><br />
   </div>
 </template>
 
 
 
-<!-- MADE CHANGES TO THIS TEMPLATE 4/15/2016. See commented out code below. -->
+
 <template name="website_form">
   {{#if currentUser}}
 	<a class="btn btn-default js-toggle-website-form" href="#">
@@ -134,13 +123,13 @@
 
 <!-- template that displays several website items -->
 <template name="website_list">
-    <div class="container">  <!-- Added evening of 4/20/2016 -->
+    <div class="container">
 	<ol>
 	{{#each websites}}
 	{{>website_item}}
 	{{/each}}
 	</ol>
-    </div>                   <!-- Added evening of 4/20/2016 -->
+    </div>
 </template>
 
 <!-- template that displays individual website entries -->
@@ -160,11 +149,6 @@
 	<p> Upvotes:{{upVoteCount}} Downvotes:{{downVoteCount}}
 	</p>
 	<p> Date Created: {{createdOn}}</p>
-	<!--
-	Comments:<br />
-	<input type="text" name="Comment" class="comments">
-	<br /><br />
-	-->
 	{{#if currentUser}}
 	        <button class="js-del-item btn btn-warning">DELETE</button>
 	{{/if}}

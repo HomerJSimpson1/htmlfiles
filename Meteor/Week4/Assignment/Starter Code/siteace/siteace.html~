@@ -83,18 +83,21 @@
        <br /><br />
 
        Comments:<br />
-       <!--
+       
         {{#each comments}}
-	     {{comment}}
-	{{/each}}
-	 -->
-       {{comments}}
+	     {{this}}<br /><br />
+        {{/each}}
+       
+       <!-- {{comments}} -->
 
         <br /><br />       
         Post Comment:<br />
-	<input type="text" name="Comment" class="comments">
+	<form class="new_comment">
+	  <input type="text" name="Comment" class="comments" placeholder="Comment goes here...">
+	  <input type="submit" value="Submit">
+	</form>
 	<br />
-	<button class="js-post-comment btn btn-success">POST</button>
+<!--	<button class="js-post-comment btn btn-success">POST</button> -->
 	<br /><br />
   </div>
 </template>
