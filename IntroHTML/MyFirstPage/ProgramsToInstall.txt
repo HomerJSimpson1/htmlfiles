@@ -1,0 +1,17 @@
+SQL Server
+Java
+NetBeans
+Eclipse
+
+
+
+
+
+
+NOW COMPLETED:
+MATLAB		-- DONE!
+MS Office	-- DONE!
+MySQL		-- DONE!
+Visual Studio	-- DONE!
+R		-- DONE!
+R Studio	-- DONE!
