@@ -4,7 +4,8 @@ body {
     color: black;
     line-height: 14pt;
     padding-left: 5pt;
-    padding-right: 5pt;
+    /* I changed the padding-right value from 5pt to 25pt, as I think 25pt looks better with the border around the logo image. */
+    padding-right: 25pt; 
     padding-top: 5pt;
 }
 
@@ -22,6 +23,14 @@ p.subheader {
 img {
     padding: 3pt;
     float: right;
+    /* I added the border and background-color stuff myself */
+    /*
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    */
+    border: 10px double red;
+    background-color: blue;
 }
 
 a {
