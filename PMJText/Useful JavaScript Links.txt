@@ -1,0 +1,9 @@
+JavaScript Array Built-In Methods:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Methods
+
+JavaScript Guide:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+
+JavaScript Math Built-In Methods:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math#Methods
+

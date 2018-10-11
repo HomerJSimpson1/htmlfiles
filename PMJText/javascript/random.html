@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html language="en">
+  <head>
+    <title>Random Fun</title>
+    <script type="text/javascript" src="random.js"></script>
+  </head>
+
+  <body>
+    <h1>Random Fun</h1>
+    <p>Enter two numbers representing the low and high ends bounding the range in which
+      you wish to generate a random integer.
+    </p>
+    
+    <form name="theform">
+      Low Value:
+      <input type="text" name="low" size="20" /><br>
+      High Value:
+      <input type="text" name="high" size="20" /><br>
+      <!-- 
+      <input type="button" name="calculate" value="Calculate"
+	     onclick="alert(rand(parseInt(document.theform.low.value), parseInt(document.theform.high.value)));" />
+
+      -->
+      <input type="button" name="calculate" value="Calculate"
+	     onclick="var result = useRand();" />
+    </form>
+  </body>
+</html>
