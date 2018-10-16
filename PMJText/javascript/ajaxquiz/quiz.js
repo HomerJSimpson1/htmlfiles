@@ -42,7 +42,7 @@ function checkAnswer() {
 
 
 // Set up the event handlers for the buttons
-obj=document.getElementbyId("start_quiz");
+obj=document.getElementById("start_quiz");
 obj.onclick = getQuestions;
 ans=document.getElementById("submit");
 ans.onclick = checkAnswer;
