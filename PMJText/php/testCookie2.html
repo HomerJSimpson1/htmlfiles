@@ -5,12 +5,22 @@
     <title>Setting a Cookie</title>
     <script type="text/javascript">
       //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 13:30:00 GMT; path=/; domain=\"\" ";
-      var expTime = new Date("October 25, 2018 10:37:00").getTime()/1000.0;
-      alert(expTime);
+      //var expTime = new Date("October 25, 2018 10:37:00").getTime()/1000.0;
+      //alert(expTime);
       //document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain=\"\" ";
-      //document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain=127.0.0.1 ";
+      //document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain=127.0.0.1";
       //document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain=.local. ";
-      document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain='' ";
+      //document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain='' ";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain='' ";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain='';";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain=127.0.0.1";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain=.local.;";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain=www.example.com";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain=www.example.com;";
+      //document.cookie = "vegetable = artichoke; expires=Thu, 25 Oct 2018 18:30:00 GMT; path=/; domain=null";
+
+      // Okay, the following works, but ONLY IF you go to http://127.0.0.1/testCookie2.html, NOT http://localhost/testCookie2.html
+      document.cookie = "vegetable = artichoke; expires=expTime; path=/; domain=127.0.0.1";
     </script>
   </head>
 
