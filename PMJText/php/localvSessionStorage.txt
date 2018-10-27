@@ -1,0 +1,12 @@
+To place items in local or session storage, you can use JavaScript to access the HTML5 Web Storage API, like so:
+
+localStorage.setitem("loggedIn", true);
+sessionStorage.setitem("displayName", "Jane");
+
+To access these values later, you can use JavaScript again:
+
+var loggedIn = localStorage.getItem("loggedIn");
+var displayName = sessionStorage.getItem("displayName");
+
+You can learn more about the HTML5 Web Storage API at https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/.
+
