@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html language="en">
+  <head>
+    <title>Form Display Example</title>
+    <script type="text/javascript">
+      function display() {
+          dispWin = window.open('', 'NewWin', 'toolbar=no, status=no, width=300, height=200');
+          message = "<ul><li>NAME:" +
+	      document.form1.name.value;
+	  message += "</li><li>ADDRESS:" +
+	      document.form1.address.value;
+	  message += "</li><li>PHONE:" +
+	      document.form1.phone.value;
+	  message += "</li></ul>";
+          dispWin.document.write(message);
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Form Display Example</h1>
+    <p>
+      Enter the following information. When you press the Display button, the data ou entered will
+      be displayed in a pop-up window.
+    </p>
+    <!-- 
+	 NOTE: Although I added some pattern info and made the telephone a required field, etc, there is no
+	 enforcement of the validation, because the form has no submit button.
+      -->
+    <form name="form1" method="get" action="">
+      <p>NAME: <input type="text" name="name" size="50" required></p>
+      <p>ADDRESS: <input type="text" name="address" size="50"></p>
+      <p>PHONE: <input type="tel" name="phone" placeholder="123-456-7890"
+		       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></p>
+      <p><input type="button" value="Display" onclick="display();"></p>
+    </form>
+  </body>
+</html>
