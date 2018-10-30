@@ -25,12 +25,12 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
       <head>
 	<title>A PHP Number Guessing Script</title>
       </head>
       <body>
-	<h1><?php echo $message ?></h1>
+	<h1><?php echo $message; ?></h1>
 	<p><strong>Guess Number:</strong> <?php echo $num_tries; ?></p>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	      <p><label for="guess">Type your guess here:</label><br>

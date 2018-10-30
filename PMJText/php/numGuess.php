@@ -29,7 +29,7 @@
 	<title>A PHP Number Guessing Script</title>
       </head>
       <body>
-	<h1><?php echo $message ?></h1>
+	<h1><?php echo $message; ?></h1>
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	      <p><label for="guess">Type your guess here:</label><br>
 	      	 <input type="text" id="guess" name="guess">
