@@ -63,3 +63,63 @@ SELECT WEEK('2001-12-30', 1);		-- Returns 52.  The 2nd argument indicates the st
 SELECT WEEK('2001-12-31', 1);		-- Returns 53.  The 2nd argument indicates the start day, in this case Monday.
 
 
+-- Working with Hours, Minutes, and Seconds
+-- The following returns each component of the time separately (e.g. hours=7, minutes=27, seconds=49)
+SELECT HOUR('2016-01-09 07:27:49') AS hours, MINUTE('2016-01-09 07:27:49') AS minutes, SECOND('2016-01-09 07:27:49') AS seconds;
+
+SELECT CONCAT_WS(':', HOUR('2016-01-09 07:27:49'), MINUTE('2016-01-09 07:27:49')) AS sample_time;	  -- Returns 07:27
+
+
+-- USING THE DATE_FORMAT FUNCTION
+-- GENERAL FORMAT: DATE_FORMAT(date, format). See chart pp. 476-477 of text for format options
+SELECT DATE_FORMAT('2016-01-09 07:27:49', '%h%i') AS sample_time;	-- Returns 07:27
+
+SELECT DATE_FORMAT('2016-01-09 07:27:49', '%W, %M %D, %Y') AS sample_time;	-- Returns Saturday, January 9th, 2016
+
+-- Returns current time, but using the book's example current time result
+-- Returns Tuesday the 13th of September, 2016 around 1 o'clock PM
+SELECT DATE_FORMAT(NOW(), '%W the %D of %M, %Y around %1 o\'clock %p') AS sample_time;	   --'
+
+
+-- DATE ARITHMETIC
+
+-- DATE_ADD(date, INTERVAL value type)
+-- DATE_SUB(date, INTERVAL value type)
+-- See chart p. 478 text for example INTERVAL value types
+
+SELECT DATE_ADD(NOW(), INTERVAL 21 DAY);	      -- Returns 2016-10-04 16:03:41 (Using current time value from the book)
+SELECT DATE_SUB(NOW(), INTERVAL 21 DAY);	      -- Returns 2016-08-23 16:03:58
+
+-- If no hours, minutes, or seconds are part of the expression, then the value returned is just a date, not a datetime
+SELECT DATE_ADD('2015-12-31', INTERVAL 1 DAY);	    -- Returns '2016-01-01'
+SELECT DATE_ADD('2015-12-31', INTERVAL 12 HOUR);    -- Returns '2015-12-31 12:00:00
+
+-- You can also use + and - operators in lieu of DATE_ADD and DATE_SUB.
+SELECT '2015-12-31' + INTERVAL 1 DAY; 	      -- Returns '2016-01-01'
+
+
+-- OTHER DATE/TIME FUNCTIONS
+-- NOW() returns a datetime value corresponding to the current date and time
+-- CURDATE() and CURRENT_DATE() (synonymous functions) return the current date in YYYY-MM-DD format
+SELECT CURDATE(), CURRENT_DATE();
+
+-- CURTIME() and CURRENT_TIME() (also synonymous) return the current time in HH:MM:SS format
+SELECT CURTIME(), CURRENT_TIME();
+
+-- I *think* the following 3 return the same result
+SELECT NOW(), SYSDATE(), CURRENT_TIMESTAMP();
+
+-- UNIX_TIMESTAMP() returns the current date in (or converts a given date to) UNIX timestamp format.
+-- UNIX timestamp format is in seconds since the epoch, or seconds since midnight, January 1, 1970.
+
+SELECT UNIX_TIMESTAMP();    -- Returns (in book example) 1473782880
+
+SELECT UNIX_TIMESTAMP('1973-12-30');	-- Returns 126057600
+
+
+-- FROM_UNIXTIME() performs the inverse operation; that is, converts from UNIX timestamp format to full datetime format.
+SELECT FROM_UNIXTIME('1473782880');	-- Returns 2016-09-13 16:08:00.000000
+
+-- Displaying the datetime result in a more visually appealing manner....
+SELECT FROM_UNIXTIME('UNIX_TIMESTAMP(), '%D %M %Y at %h:%i:%s');	-- Returns 13th September 2016 at 04:09:13 (book example)
+
