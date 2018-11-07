@@ -10,7 +10,7 @@
 	   $res = mysqli_query($mysqli, $sql);
 
 	   if ($res) {
-	      $number_of_row = mysqli_num_rows($res);
+	      $number_of_rows = mysqli_num_rows($res);
 	      printf("Result set has %d rows.\n", $number_of_rows);
 	   }
 	   else {
