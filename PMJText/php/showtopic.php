@@ -9,7 +9,7 @@
 	}
 
 	// Create safe values for use
-	$safe_topic_id = $mysqli_real_escape_string($mysqli, $_GET['topic_id']);
+	$safe_topic_id = mysqli_real_escape_string($mysqli, $_GET['topic_id']);
 
 	// Verify the topic exists
 	$verify_topic_sql = "SELECT topic_title FROM forum_topics
@@ -45,7 +45,7 @@
 		  <th>AUTHOR</th>
 		  <th>POST</th>
 		</tr>
-	END_OF_TEXT;
+END_OF_TEXT;
 	
 	     while($posts_info = mysqli_fetch_array($get_posts_res)) {
 	     	$post_id = $posts_info['post_id'];
@@ -67,12 +67,12 @@
 		    </p>
 		  </td>
 		</tr>
-	END_OF_TEXT;
+END_OF_TEXT;
 	     } // end while
 
 	     // Free results
-	     mysqli_free_results($get_posts_res);
-	     mysqli_free_results($verify_topic_res);
+	     mysqli_free_result($get_posts_res);
+	     mysqli_free_result($verify_topic_res);
 
 	     // Close connection to MySQL
 	     mysqli_close($mysqli);

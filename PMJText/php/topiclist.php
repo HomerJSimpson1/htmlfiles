@@ -3,25 +3,28 @@
 	doDB();
 
 	// Gather the topics
-	$get_topios_sql = "SELECT topic_id, topic_title, DATE_FORMAT(topic_create_time, '%b %s %Y at %r') AS 
+	$get_topics_sql = "SELECT topic_id, topic_title, DATE_FORMAT(topic_create_time, '%b %s %Y at %r') AS 
 			  	  fmt_topic_create_time, topic_owner FROM forum_topics
 				  ORDER BY topic_create_time DESC";
 
-	$get_toopics_res = mysql_query($mysqli, $get_topics_sql) or die(mysqli_error($mysqli));
+	$get_topics_res = mysqli_query($mysqli, $get_topics_sql) or die(mysqli_error($mysqli));
 
-	if (mysqli_num_row($get_topics_res) < 1) {
+	if (mysqli_num_rows($get_topics_res) < 1) {
 	     // Then there are no topics, so say so
-	     $display_block = "<p><em>No topics exist</em></p>";
+	     $display_block = "<p><em>No topics exist.</em></p>";
 	}
 	else {
 	     // Create the display string
-	     $display_block <<<END_OF_TEXT
+	     // Uses Heredoc syntax.  Note the closing identifier MUST be at the start of the line.
+	     // There also must be no other symbols on the same line as the closing identifier.
+	     // Just the closing identifier and a semicolon.
+	     $display_block = <<<END_OF_TEXT
 	     <table>
 		<tr>
 		  <th>TOPIC TITLE</th>
 		  <th># of POSTS</th>
 		</tr>
-	END_OF_TEXT;
+END_OF_TEXT;
 
 
 	    while ($topic_info = mysqli_fetch_array($get_topics_res)) {
@@ -50,7 +53,7 @@
 		    </td>
 		    <td class="num_posts_col">$num_posts</td>
 		  </tr>
-	    END_OF_TEXT;
+END_OF_TEXT;
 		  
 	    } // end while ($topic_info ...)  loop
 
@@ -95,6 +98,6 @@
       <body>
 	<h1>Topics in My Forum</h1>
 	<?php echo $display_block; ?>
-	<p>Would you like to <a hef="addtopic.html">add a topic</a>?</p>
+	<p>Would you like to <a href="addtopic.html">add a topic</a>?</p>
       </body>
 </html>

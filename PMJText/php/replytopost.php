@@ -74,7 +74,7 @@
 
 	else if ($_POST) {
 	     	// Check for required items from form
-		if ((!$_POST['topic_id'] || (!$_POST['post_text']) || (!$_POST['post_owner'])) {
+		if ((!$_POST['topic_id']) || (!$_POST['post_text']) || (!$_POST['post_owner'])) {
 		   header("Location: topiclist.php");
 		   exit;
 		}
