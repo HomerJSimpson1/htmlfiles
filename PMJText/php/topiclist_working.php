@@ -19,18 +19,11 @@
 	     // There also must be no other symbols on the same line as the closing identifier.
 	     // Just the closing identifier and a semicolon.
 	     $display_block = <<<END_OF_TEXT
-	     // Add Javascript to sort - see Listing 19.7
-	     // <table>
-	     <table id="myTable">
-	     <thead>
+	     <table>
 		<tr>
-		  //<th>TOPIC TITLE</th>
-		  //<th># of POSTS</th>
-		  <th><a href="javascript:sortTable(myTable, 0, 0);">TOPIC TITLE</a></th>
-		  <th><a href="javascript:sortTable(myTable, 1, 0);"># of POSTS</a></th>
+		  <th>TOPIC TITLE</th>
+		  <th># of POSTS</th>
 		</tr>
-	     </thead>
-	     <tbody>
 END_OF_TEXT;
 
 
@@ -72,8 +65,7 @@ END_OF_TEXT;
 	    mysqli_close($mysqli);
 
 	    // Close up the table
-	    //$display_block .= "</table>";
-	    $display_block .= "</tbody></table>";
+	    $display_block .= "</table>";
 	    
 	} // end else
 ?>
@@ -107,20 +99,5 @@ END_OF_TEXT;
 	<h1>Topics in My Forum</h1>
 	<?php echo $display_block; ?>
 	<p>Would you like to <a href="addtopic.html">add a topic</a>?</p>
-	<!-- Add Javascript function sortTable() for sorting -->
-	<script type="text/javascript">
-	  function sortTable(table, col, reverse) {
-	  	   var tb = table.tBodies[0];
-		   var tr = Array.prototype.slice.call(tb.rows, 0);
-		   var i;
-		   reverse = -((+reverse) || -1);
-		   tr = tr.sort(function (a, b) {
-		      return reverse // '-1 * ' if want opposite order
-		      	     * (a.cells[col].textContent.trim().localeCompare(b.cells[col].textContent.trim()));
-	  	   });
-		   for (i=0; i < tr.length; ++i) tb.appendChild(tr[i]);
-	  }
-	  // sortTable(tableNode, columnId, false);
-	</script>
       </body>
 </html>
